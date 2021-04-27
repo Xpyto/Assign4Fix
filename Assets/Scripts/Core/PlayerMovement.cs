@@ -50,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
         }
         prevPosition = currPosition;
 
+        if(rb.velocity != new Vector2(0,0)){
+            isMoving = true;
+        }
+
         Debug.Log(isMoving);
 
         if(Input.GetButton("Jump") && isGrounded){
@@ -82,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     }
  
     private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.CompareTag("floor")){
+        if(other.gameObject.CompareTag("floor") || other.gameObject.CompareTag("platformEntity")){
         isGrounded = false;
         }
     }
