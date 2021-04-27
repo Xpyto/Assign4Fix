@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     float fallMultiplier;
     bool isGrounded;
     public bool isMoving;
+    private Vector3 prevPosition;
+    private Vector3 currPosition;
+    public bool isDead;
 
     float distToGround;
 
@@ -24,17 +27,31 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        isDead = false;
         moveSpeed = 5f;
         jumpMultiplier = 2f;
         jumpVelocity = 6f;
         fallMultiplier = 2.5f;
-        isGrounded = true;
+        isGrounded = false;
         isMoving = false;
         distToGround = cd.bounds.extents.y;
+        prevPosition = transform.position;
+        currPosition = transform.position;
     }
 
     void Update()
     {
+        if(!isDead){
+        currPosition = transform.position;
+        if(currPosition != prevPosition){
+            isMoving = true;
+        }else{
+            isMoving = false;
+        }
+        prevPosition = currPosition;
+
+        Debug.Log(isMoving);
+
         if(Input.GetButton("Jump") && isGrounded){
             rb.velocity = Vector2.up * jumpVelocity;
         }
@@ -50,17 +67,22 @@ public class PlayerMovement : MonoBehaviour
         }else if(rb.velocity.y > 0 && !Input.GetButton("Jump")){
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpMultiplier - 1) * Time.deltaTime;
         }
-
+        }
         
     }
 
     
     private void OnCollisionStay2D(Collision2D other) {
-        CheckIfGrounded();
+        if(!other.gameObject.CompareTag("boundary")){
+            CheckIfGrounded();
+        }
+        if(other.gameObject.CompareTag("hazard")){
+            isDead = true;
+        }
     }
  
     private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.CompareTag("Floor")){
+        if(other.gameObject.CompareTag("floor")){
         isGrounded = false;
         }
     }
