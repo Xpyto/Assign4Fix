@@ -19,4 +19,9 @@ public class GameOverScript : MonoBehaviour
     public void MainMenu(){
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void NextLevel(){
+        SceneManager.LoadScene("Level1");
+    }
 }   
+

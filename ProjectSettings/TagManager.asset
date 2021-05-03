@@ -8,6 +8,7 @@ TagManager:
   - hazard
   - boundary
   - platformEntity
+  - exit
   layers:
   - Default
   - TransparentFX

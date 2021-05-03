@@ -32,8 +32,9 @@ public class EntityMovement : MonoBehaviour
             erb.gravityScale = 0;
             
         }else{
-            erb.velocity = savedVelocity + Vector3.down;
             erb.gravityScale = 1;
+            erb.velocity = savedVelocity + Vector3.down;
+            
         }
     }
 }
