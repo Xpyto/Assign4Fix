@@ -36,5 +36,9 @@ public class EntityMovement : MonoBehaviour
             erb.velocity = savedVelocity + Vector3.down;
             
         }
+
+        if(transform.position.y < -6){
+            this.gameObject.SetActive(false);
+        }
     }
 }
