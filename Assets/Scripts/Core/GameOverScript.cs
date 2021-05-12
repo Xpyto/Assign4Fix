@@ -13,8 +13,7 @@ public class GameOverScript : MonoBehaviour
     }
 
     public void Restart(){
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu(){
@@ -29,4 +28,3 @@ public class GameOverScript : MonoBehaviour
         SceneManager.LoadScene("LevelSelect");
     }
 }   
-

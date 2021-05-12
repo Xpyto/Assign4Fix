@@ -28,13 +28,12 @@ public class EntityMovement : MonoBehaviour
         }
         if(!isMoving){
             savedVelocity = currVelocity;
-            erb.velocity = new Vector3(0,0,0);
+            erb.velocity = new Vector3(0, 0, 0);
             erb.gravityScale = 0;
             
         }else{
-            erb.gravityScale = 1;
             erb.velocity = savedVelocity + Vector3.down;
-            
+            erb.gravityScale = 1;
         }
 
         if(transform.position.y < -6){

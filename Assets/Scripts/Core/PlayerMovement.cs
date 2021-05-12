@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 prevPosition;
     private Vector3 currPosition;
     public bool isDead;
-    public bool isComplete;
 
     float distToGround;
 
@@ -35,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
         fallMultiplier = 2.5f;
         isGrounded = false;
         isMoving = false;
-        isComplete = false;
         distToGround = cd.bounds.extents.y;
         prevPosition = transform.position;
         currPosition = transform.position;
@@ -43,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(!isDead && !isComplete){
+        if(!isDead){
         currPosition = transform.position;
         if(currPosition != prevPosition){
             isMoving = true;
@@ -57,10 +55,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Debug.Log(isMoving);
-
-        if(Input.GetAxisRaw("Fire1") == 1f){
-            isMoving = true;
-        }
 
         if(Input.GetButton("Jump") && isGrounded){
             rb.velocity = Vector2.up * jumpVelocity;
@@ -94,12 +88,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
  
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("exit")){
-            isComplete = true;
-        }
-    }
-
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("floor") || other.gameObject.CompareTag("platformEntity")){
         isGrounded = false;
