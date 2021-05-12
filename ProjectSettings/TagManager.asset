@@ -8,7 +8,6 @@ TagManager:
   - hazard
   - boundary
   - platformEntity
-  - exit
   layers:
   - Default
   - TransparentFX
@@ -16,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Background
+  - Floor
+  - Lava
   - 
   - 
   - 
@@ -45,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3572391183
+    locked: 0
+  - name: Forebackground
+    uniqueID: 882605999
     locked: 0

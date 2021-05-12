@@ -13,15 +13,10 @@ public class GameOverScript : MonoBehaviour
     }
 
     public void Restart(){
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu(){
         SceneManager.LoadScene("MainMenu");
     }
-
-    public void NextLevel(){
-        SceneManager.LoadScene("Level1");
-    }
 }   
-
