@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         }
         }
         
-        if(transform.position.y < -6){
+        if(transform.position.y < -50){
             isDead = true;
         }
     }
