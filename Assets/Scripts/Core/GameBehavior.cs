@@ -6,6 +6,7 @@ public class GameBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameOverScript gameOver;
+    public GameOverScript gameWon;
     public PlayerMovement player;
 
     public void GameOver(){
@@ -16,6 +17,11 @@ public class GameBehavior : MonoBehaviour
         if(player.isDead){
             GameOver();
         }
+
+        if(player.isWon){
+            gameWon.Setup();
+        }
     }
+
 
 }

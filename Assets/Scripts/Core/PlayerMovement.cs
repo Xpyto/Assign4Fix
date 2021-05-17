@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 currPosition;
     public bool isDead;
 
+    public bool isWon;
+
     float distToGround;
 
     Rigidbody2D rb;
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         fallMultiplier = 2.5f;
         isGrounded = false;
         isMoving = false;
+        isWon = false;
         distToGround = cd.bounds.extents.y;
         prevPosition = transform.position;
         currPosition = transform.position;
@@ -91,6 +94,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("floor") || other.gameObject.CompareTag("platformEntity")){
         isGrounded = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("exit")){
+            isWon = true;
         }
     }
  
