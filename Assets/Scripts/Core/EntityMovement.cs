@@ -33,7 +33,7 @@ public class EntityMovement : MonoBehaviour
             
         }else{
             erb.velocity = savedVelocity + Vector3.down;
-            erb.gravityScale = 1;
+            erb.gravityScale = 0.8f;
         }
 
         if(transform.position.y < -6){

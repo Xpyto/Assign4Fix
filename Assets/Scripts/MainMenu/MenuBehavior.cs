@@ -24,5 +24,13 @@ public class MenuBehavior : MonoBehaviour
     public void Loadlvl3(){
         SceneManager.LoadScene("Level3");
     }
+
+    public void Loadlvl4(){
+        SceneManager.LoadScene("Level4");
+    }
+
+    public void Loadlvl5(){
+        SceneManager.LoadScene("Level5");
+    }
 }
 

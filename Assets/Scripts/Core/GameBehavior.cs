@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameBehavior : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class GameBehavior : MonoBehaviour
 
         if(player.isWon){
             gameWon.Setup();
+        }
+
+        if(Input.GetButton("Fire3")){
+            gameOver.Restart();
         }
     }
 
